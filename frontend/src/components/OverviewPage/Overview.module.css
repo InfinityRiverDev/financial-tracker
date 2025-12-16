@@ -1,0 +1,159 @@
+.page {
+  padding: 32px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 26px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid var(--glass);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+}
+
+.cardTitle {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.filters {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.filters select {
+  background: var(--panel);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--glass);
+  color: var(--text);
+  outline: none;
+}
+
+.downloadBtn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.table th {
+  text-align: left;
+  padding-bottom: 8px;
+  opacity: 0.7;
+}
+
+.table td {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.income {
+  color: #4ade80;
+}
+
+.expense {
+  color: #fb7185;
+}
+
+.deleteBtn {
+  background: none;
+  color: var(--danger);
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.currencyBtn {
+  padding: 10px 16px;
+  background: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.currencyBtn:hover {
+  background: #d97706;
+}
+
+.modalBg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #0f1720;
+  padding: 25px;
+  border-radius: 14px;
+  width: 350px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.currencySelect {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #2c3b4b;
+  cursor: pointer;
+}
+
+.modalActions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancelBtn {
+  padding: 8px 14px;
+  border: none;
+  background: #2c4159;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.applyBtn {
+  padding: 8px 14px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.applyBtn:hover {
+  background: #2563eb;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+}

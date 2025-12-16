@@ -1,0 +1,62 @@
+.page {
+  padding: 32px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.form {
+  background: var(--panel);
+  margin-bottom: 32px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.group label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.group select,
+.group input {
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--glass);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.group select:focus,
+.group input:focus {
+  outline: 2px solid var(--accent);
+}
+
+.btn {
+  background: var(--accent);
+  padding: 12px 0;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: var(--accent-2);
+}
