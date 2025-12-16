@@ -2,14 +2,18 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const transactionsApi = createApi({
   reducerPath: "transactionsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://financial-tracker-t5qu.onrender.com" }),
+
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${process.env.REACT_APP_API_URL}/api`,
+  }),
+
   tagTypes: ["Transactions"],
 
   endpoints: (builder) => ({
     getTransactions: builder.query({
       query: () => "transactions",
       providesTags: ["Transactions"],
-      pollingInterval: 2000
+      pollingInterval: 2000,
     }),
 
     addTransaction: builder.mutation({
@@ -28,6 +32,7 @@ export const transactionsApi = createApi({
       }),
       invalidatesTags: ["Transactions"],
     }),
+
     importTransactions: builder.mutation({
       query: (data) => ({
         url: "transactions/import",
