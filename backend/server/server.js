@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+import fetch from "node-fetch";
+
+
 dotenv.config();
 
 const app = express();
@@ -65,7 +68,20 @@ app.post("/api/transactions/import", async (req, res) => {
   }
 });
 
-/* ===== START SERVER ===== */
+app.get("/api/news", async (req, res) => {
+  try {
+    const response = await fetch(
+      `https://gnews.io/api/v4/search?q=finance&lang=en&max=10&apikey=${process.env.GNEWS_KEY}`
+    );
+
+    const data = await response.json();
+    res.json(data);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ message: "Failed to load news" });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () =>

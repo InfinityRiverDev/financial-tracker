@@ -2,25 +2,22 @@ import { useEffect, useState } from "react";
 import styles from "./News.module.css";
 
 export default function News() {
-  const [news, setNews] = useState([]);
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    async function loadNews() {
+    const load = async () => {
       try {
-        var url = 'https://gnews.io/api/v4/search?q=example&lang=en&max=10&apikey=3c7066151f2ab5fe3578fa1f95097a08';
-
-        fetch(url)
-          .then(response => response.json())
-          .then(data => {
-              setNews(data.articles); 
-          })
-          .catch(err => console.error(err));
-      } catch (err) {
-        console.error("Ошибка загрузки новостей:", err);
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/news`
+        );
+        const data = await res.json();
+        setArticles(data.articles || []);
+      } catch {
+        console.log("Not news");
       }
-    }
+    };
 
-    loadNews();
+    load();
   }, []);
 
   return (
@@ -28,7 +25,7 @@ export default function News() {
       <h1 className={styles.title}>News</h1>
 
       <div className={styles.list}>
-        {news.map((item, index) => (
+        {articles.map((item, index) => (
           <div className={styles.card} key={index}>
             {item.urlToImage && (
               <img className={styles.image} src={item.urlToImage} alt="" />
