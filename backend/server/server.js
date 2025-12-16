@@ -6,13 +6,16 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: "*", // позже можно заменить на vercel-домен
+}));
 app.use(express.json());
 
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("Mongo DB error:", err));
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB error:", err));
 
 const transactionSchema = new mongoose.Schema({
   type: String,
@@ -24,27 +27,34 @@ const transactionSchema = new mongoose.Schema({
 
 const Transaction = mongoose.model("Transaction", transactionSchema);
 
+
+// GET all
 app.get("/api/transactions", async (req, res) => {
   const items = await Transaction.find();
   res.json(items);
 });
 
+// CREATE one
 app.post("/api/transactions", async (req, res) => {
   const tx = await Transaction.create(req.body);
   res.json(tx);
 });
 
+// DELETE one
 app.delete("/api/transactions/:id", async (req, res) => {
   const result = await Transaction.findByIdAndDelete(req.params.id);
   res.json({ success: true, deleted: result });
 });
 
+// IMPORT JSON
 app.post("/api/transactions/import", async (req, res) => {
   try {
     const data = req.body;
 
     if (!Array.isArray(data)) {
-      return res.status(400).json({ message: "Expected array of transactions" });
+      return res.status(400).json({
+        message: "Expected array of transactions",
+      });
     }
 
     const saved = await Transaction.insertMany(data);
@@ -55,4 +65,9 @@ app.post("/api/transactions/import", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+/* ===== START SERVER ===== */
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on port ${PORT}`)
+);
