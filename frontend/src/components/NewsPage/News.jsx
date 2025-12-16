@@ -7,9 +7,7 @@ export default function News() {
   useEffect(() => {
     async function loadNews() {
       try {
-        var url = 'https://newsapi.org/v2/everything?' +
-          'sources=bbc-news&' +
-          'apiKey=ba0f9464fec245438dc4fed8f311339a';
+        var url = 'https://gnews.io/api/v4/search?q=example&lang=en&max=10&apikey=3c7066151f2ab5fe3578fa1f95097a08';
 
         fetch(url)
           .then(response => response.json())

@@ -157,3 +157,39 @@
   transform: translateX(-20px);
   transition: all 0.3s ease;
 }
+
+@media (max-width: 768px) {
+  .page {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* вместо 2 колонок */
+    gap: 16px;
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filters select,
+  .downloadBtn,
+  .currencyBtn {
+    width: 100%;
+  }
+
+  .table {
+    font-size: 14px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 4px;
+  }
+}

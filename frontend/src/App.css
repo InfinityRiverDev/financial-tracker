@@ -37,3 +37,9 @@ html,body,#root {
   background: var(--panel); 
   border-radius: 10px;
 }
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding-bottom: 80px; /* место под нижний navbar */
+  }
+}
